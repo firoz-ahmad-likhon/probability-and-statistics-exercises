@@ -13,7 +13,7 @@ A collection of exercises and practice problems on probability and statistics us
 4. Install dependencies `pip install -r requirements.txt`
 5. Run the code `python file_name.py`
 
-### The repository contains the following practices:
+## The repository contains the following practices:
 
 ### Descriptive Analysis
 - **Measure of central tendency**
@@ -59,3 +59,6 @@ A collection of exercises and practice problems on probability and statistics us
 - P-Value
 - Type I and Type II Errors
 - Power of Test
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
