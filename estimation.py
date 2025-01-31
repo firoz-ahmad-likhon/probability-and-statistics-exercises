@@ -94,8 +94,8 @@ def z_distribution(mean: float, se: float, cl: float, range_start: float | None,
     probability = None
     if range_start is not None and range_end is not None:
         '''The formula for calculating z score without generating a distribution object:
-        z_start = (range_start - proportion) / std_error
-        z_end = (range_end - proportion) / std_error
+        z_start = (range_start - mean) / se
+        z_end = (range_end - mean) / se
         probability_within_range = stats.norm.cdf(z_end) - stats.norm.cdf(z_start)'''
         dist = stats.norm(mean, se)  # Create normal distribution object
         probability = dist.cdf(range_end) - dist.cdf(range_start)
@@ -103,32 +103,34 @@ def z_distribution(mean: float, se: float, cl: float, range_start: float | None,
     return moe, ci, probability
 
 
-def t_distribution(mean: float, se: float, cl: float, n: int, start: float | None, end: float | None) -> tuple[np.float64, tuple[np.float64, np.float64], np.float64 | None]:
+def t_distribution(mean: float, se: float, cl: float, n: int, range_start: float | None, range_end: float | None) -> tuple[np.float64, tuple[np.float64, np.float64], np.float64 | None]:
     """Estimate using T Distribution.
 
     :param mean: Sample mean (float)
     :param se: Standard Error (float)
     :param cl: Confidence level (float), e.g., 0.95 for 95% confidence
     :param n: Sample size (int)
-    :param start: Start of the range for probability calculation (float or None)
-    :param end: End of the range for probability calculation (float or None)
+    :param range_start: Start of the range for probability calculation (float or None)
+    :param range_end: End of the range for probability calculation (float or None)
     :return: Tuple containing:
         - Margin of Error (float)
         - Confidence Interval (tuple of two floats)
         - Probability of the value falling within the specified range (float or None)
     """
     df = n - 1  # Degree of Freedom
-    dist = stats.t(df)
     alpha = (1 - cl) / 2  # Significance level
-    t_critical = dist.ppf(1 - alpha)
+    t_critical = stats.t.ppf(1 - alpha, df)
     moe = t_critical * se  # Margin of Error
     ci = (mean - moe, mean + moe)  # Confidence Interval
 
     probability = None
-    if start is not None and end is not None:
-        t_start = (start - mean) / se
-        t_end = (end - mean) / se
-        probability = dist.cdf(t_end) - dist.cdf(t_start)
+    if range_start is not None and range_end is not None:
+        '''The formula for calculating t score without generating a distribution object:
+        t_start = (range_start - mean) / se
+        t_end = (range_end - mean) / se
+        probability_within_range = stats.t.cdf(t_end, df) - stats.t.cdf(t_start, df)'''
+        dist = stats.t(df, mean, se)
+        probability = dist.cdf(range_end) - dist.cdf(range_start)
 
     return moe, ci, probability
 
@@ -158,14 +160,14 @@ def calculate_mean_estimation(mean: float, n: int, std: float, is_population_std
         return t_distribution(mean, se, cl, n, start, end)
 
 
-def calculate_proportion_estimation(p: float, n: int, cl: float = 0.95, start: float | None = None, end: float | None = None) -> tuple[np.float64, tuple[np.float64, np.float64], np.float64 | None]:
+def calculate_proportion_estimation(p: float, n: int, cl: float = 0.95, range_start: float | None = None, range_end: float | None = None) -> tuple[np.float64, tuple[np.float64, np.float64], np.float64 | None]:
     """Estimate population parameters using proportion.
 
     :param p: Sample proportion (float), where 0 <= p <= 1
     :param n: Sample size (int)
     :param cl: Confidence level (float), e.g., 0.95 for 95% confidence
-    :param start: Start of the range for probability calculation (float or None)
-    :param end: End of the range for probability calculation (float or None)
+    :param range_start: Start of the range for probability calculation (float or None)
+    :param range_end: End of the range for probability calculation (float or None)
     :return: Tuple containing:
         - Margin of Error (float)
         - Confidence Interval (tuple of two floats)
@@ -178,7 +180,7 @@ def calculate_proportion_estimation(p: float, n: int, cl: float = 0.95, start: f
 
     se = math.sqrt((p * (1 - p)) / n)
 
-    return z_distribution(p, se, cl, start, end)
+    return z_distribution(p, se, cl, range_start, range_end)
 
 
 # Example usage for mean estimation
@@ -191,10 +193,11 @@ end = 2.25
 
 moe, ci, probability = calculate_mean_estimation(
     sample_mean, sample_size, sample_std, False, confidence_interval, start, end)
-print(f"Mean Estimation - Margin of Error: {moe:.2f}")
-print(f"Mean Estimation - Confidence Interval: ({ci[0]:.2f}, {ci[1]:.2f})")
+print(f"Mean Estimation (t-distribution) - Margin of Error: {moe:.2f}")
 print(
-    f"Mean Estimation - Probability within range [{start}, {end}]: {probability:.4f}")
+    f"Mean Estimation (t-distribution) - Confidence Interval: ({ci[0]:.2f}, {ci[1]:.2f})")
+print(
+    f"Mean Estimation (t-distribution) - Probability within range [{start}, {end}]: {probability:.4f}")
 print("\n")
 
 sample_mean = 299720
@@ -206,10 +209,12 @@ end = 300000
 
 moe, ci, probability = calculate_mean_estimation(
     sample_mean, sample_size, population_std, True, confidence_interval, start, end)
-print(f"Mean Estimation - Margin of Error: {moe:.2f}")
-print(f"Mean Estimation - Confidence Interval: ({ci[0]:.2f}, {ci[1]:.2f})")
+print(f"Mean Estimation (z-distribution) - Margin of Error: {moe:.2f}")
 print(
-    f"Mean Estimation - Probability within range [{start}, {end}]: {probability:.4f}")
+    f"Mean Estimation (z-distribution) - Confidence Interval: ({ci[0]:.2f}, {ci[1]:.2f})")
+print(
+    f"Mean Estimation (z-distribution) - Probability within range [{start}, {end}]: {probability:.4f}")
+print("\n")
 
 # Proportion estimation
 sample_proportion = 0.44
