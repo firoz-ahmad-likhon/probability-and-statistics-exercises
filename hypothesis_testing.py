@@ -3,8 +3,8 @@
 # | Condition          | H₀    | H₁    | Test Type    |
 # |--------------------|-------|-------|--------------|
 # | Equal              | =     | ≠     | Two-tailed   |
-# | Greater than       | ≥     | <     | Left-tailed  |
-# | Less than          | ≤     | >     | Right-tailed |
+# | Greater than       | ≤     | >     | Right-tailed |
+# | Less than          | ≥     | <     | Left-tailed  |
 
 """
 Hypothesis Testing:
