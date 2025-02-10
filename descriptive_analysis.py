@@ -142,10 +142,10 @@ print("Mode:", mode)
 print("-----End Central Tendency-----\n\n")
 
 print("-----Start Measure of the Spread-----")
-_min = np.min(speed)
-_max = np.max(speed)
-_range = np.ptp(speed)
-mid_range = (_min + _max) / 2
+min_ = np.min(speed)
+max_ = np.max(speed)
+range_ = np.ptp(speed)
+mid_range = (min_ + max_) / 2
 q25, q50, q75 = np.percentile(speed, [25, 50, 75], method='higher')
 iqr = q75 - q25
 variance = np.var(speed)  # Population variance
@@ -154,9 +154,9 @@ std = np.std(speed)  # Population standard deviation
 s_std = np.std(speed, ddof=1)  # Sample standard deviation
 mad_mean = np.mean(np.abs(speed - np.mean(speed)))
 mad_median = np.median(np.abs(speed - np.median(speed)))
-print('min', _min)
-print('max', _max)
-print('range', _range)
+print('min', min_)
+print('max', max_)
+print('range', range_)
 print('mid range', mid_range)
 print('25%', np.percentile(speed, 25))
 print('50%', q50)
@@ -308,10 +308,10 @@ axs[0, 0].legend()
 # Plot 2: Annotations for Spread Analysis
 axs[0, 1].boxplot(speed, vert=False, patch_artist=True,
                   boxprops=dict(facecolor='lightgreen'))
-axs[0, 1].axvline(x=_min, color='blue', linestyle='--',
-                  linewidth=2, label=f'Min: {_min}')
-axs[0, 1].axvline(x=_max, color='orange', linestyle='--',
-                  linewidth=2, label=f'Max: {_max}')
+axs[0, 1].axvline(x=min_, color='blue', linestyle='--',
+                  linewidth=2, label=f'Min: {min_}')
+axs[0, 1].axvline(x=max_, color='orange', linestyle='--',
+                  linewidth=2, label=f'Max: {max_}')
 axs[0, 1].axvline(x=q25, color='magenta', linestyle='--',
                   linewidth=2, label=f'Q1: {q25}')
 axs[0, 1].axvline(x=q50, color='brown', linestyle='--',
