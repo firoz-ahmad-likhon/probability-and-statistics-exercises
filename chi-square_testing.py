@@ -98,6 +98,18 @@ Application Areas:
 from scipy.stats import chi2
 import numpy as np
 
+
+def validate_expected_frequency(expected: np.ndarray) -> None:
+    """Validates expected frequencies.
+
+    :param expected: Expected frequency.
+    :raises ValueError: If expected frequency is less than 5.
+    """
+    if np.any(expected < 5):
+        raise ValueError(
+            "Error: Expected frequency is less than 5, which may violate assumptions.")
+
+
 """Goodness-of-Fit Test.
 
 Problem:
@@ -119,6 +131,9 @@ actual = np.array([20, 30, 25, 25])
 n = actual.sum()  # Total number of candies
 length = len(actual)  # Number of colors
 expected = n / length * np.ones(length)  # Expected frequency for each color
+
+validate_expected_frequency(expected)  # Validate expected frequencies
+
 df = length - 1  # Degree of freedom
 # Chi-Squared statistic calculation
 chi_squared = np.sum((actual - expected) ** 2 / expected)
@@ -155,10 +170,13 @@ col_totals = actual.sum(axis=0, keepdims=True)
 total_observations = actual.sum()
 expected = np.outer(row_totals, col_totals) / \
     total_observations  # Expected frequency for each cell
+
+validate_expected_frequency(expected)  # Validate expected frequencies
+
 # Chi-Squared test statistic calculation
 chi_squared = np.sum((actual - expected) ** 2 / expected)
-# Degrees of freedom (df = (rows - 1) * (columns - 1))
-df = (actual.shape[0] - 1) * (actual.shape[1] - 1)
+rows, columns = actual.shape
+df = (rows - 1) * (columns - 1)  # Degrees of freedom
 
 dist = chi2(df)  # Chi-Square distribution
 p = dist.sf(chi_squared)  # 1 - dist.cdf(chi_squared)
@@ -194,11 +212,14 @@ col_totals = actual.sum(axis=0)
 total_observations = actual.sum()
 expected = np.outer(row_totals, col_totals) / \
     total_observations  # Expected frequency for each cell
+
+validate_expected_frequency(expected)  # Validate expected frequencies
+
 # Chi-Square Test Statistic
 chi_squared = np.sum((actual - expected) ** 2 / expected)
 
-# Degrees of freedom (df = (rows - 1) * (columns - 1))
-df = (actual.shape[0] - 1) * (actual.shape[1] - 1)
+rows, columns = actual.shape
+df = (rows - 1) * (columns - 1)  # Degrees of freedom
 p = chi2(df).sf(chi_squared)  # Survival function (1 - CDF)
 
 alpha = .05  # Significance level
