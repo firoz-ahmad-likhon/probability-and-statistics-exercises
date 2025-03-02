@@ -39,11 +39,6 @@ A collection of exercises and practice problems on probability and statistics us
   - Kurtosis
   - Normality
 
-### Probability Calculation from Normal Distribution
-- PDF
-- CDF
-- PPF
-
 ### Measure of Association
 - Correlation
 - Covariance
@@ -59,6 +54,12 @@ A collection of exercises and practice problems on probability and statistics us
 - P-Value
 - Type I and Type II Errors
 - Power of Test
+- Chi square test
+
+### Probability Distributions
+- Normal Distribution
+- Chi-Square Distribution
+- Binomial Distribution
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

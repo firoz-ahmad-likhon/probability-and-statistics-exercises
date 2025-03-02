@@ -143,3 +143,39 @@ high = mean + MoE  # Upper bound of confidence interval
 dist = stats.norm(x, se)  # Distribution under alternative hypothesis
 beta = dist.cdf(high) - dist.cdf(low)  # Type II error probability (Beta)
 print(se, z_critical, low, high, beta)  # Results for hypothesis error
+
+"""Binomial Distribution.
+
+Problem: A multiple choice test contains 20 questions with answer choice A, B, C and D. Only one answer choice to
+         each question represents a correct answer. Find the probability that a student will answer
+         a. exactly 6 questions correct
+         b. at least 6 questions correct (>6)
+         c. at most 6 questions correct (<6)
+         d. between 4 and 8 questions correct (4-8)
+         if he makes random guesses on all 20 questions.
+         e. calculate the mean and std deviation of the binomial distribution.
+"""
+n = 20
+p = 1 / 4  # Probability of getting a correct answer
+dist = stats.binom(n, p)  # Binomial distribution
+# For a
+k = 6
+prob = dist.pmf(k)
+print("Probability of getting 6 questions correct:", prob)
+# For b
+k = 5
+prob = dist.sf(k)
+print("Probability of getting at least 6 questions correct:", prob)
+# For c
+k = 6
+prob_c = dist.cdf(k)
+print("Probability of getting at most 6 questions correct:", prob_c)
+# For d
+k1, k2 = 4, 8
+prob_d = dist.cdf(k2) - dist.cdf(k1)
+print("Probability of getting between 4 and 8 questions correct:", prob_d)
+# For e
+mean = n * p  # or dist.mean()
+std = math.sqrt(n * p * (1 - p))  # or dist.std()
+print("Mean:", mean)
+print("Std:", std)
