@@ -144,6 +144,67 @@ dist = stats.norm(x, se)  # Distribution under alternative hypothesis
 beta = dist.cdf(high) - dist.cdf(low)  # Type II error probability (Beta)
 print(se, z_critical, low, high, beta)  # Results for hypothesis error
 
+"""Normal Distribution
+
+Problem: The scores of students in a standardized math exam are normally distributed with a mean of 75 and a standard
+         deviation of 10.
+         Find the probability that a randomly selected student:
+            a. Scores exactly 85.
+            b. Scores greater than 85 (>85).
+            c. Scores less than 65 (<65).
+            d. Scores between 70 and 90 (70-90).
+            e. Calculate the z-score for a student who scored 95.
+"""
+mean = 75
+std = 10
+dist = stats.norm(mean, std)  # Normal distribution
+# For a
+# Since normal distribution is continuous, the probability of any exact value is zero. P(X = 85) = 0
+print("Probability of getting exactly 85:", 0)
+# For b
+prob = dist.sf(85)
+print("Probability of getting greater than 85:", prob)
+# For c
+prob = dist.cdf(65)
+print("Probability of getting less than 65:", prob)
+# For d
+prob = dist.cdf(90) - dist.cdf(70)
+print("Probability of getting between 70 and 90:", prob)
+# For e
+z_score = (95 - mean) / std
+print("Z-score for 95:", z_score)
+
+"""Chi-square Distribution
+
+Problem: A university professor is analyzing the variance in time (in minutes) that students take to complete a
+         standardized test. The completion time follows a Chi-Square distribution with 10 degrees of freedom
+         (k=10). Find the probability that a randomly selected student:
+         a. Takes exactly 15 minutes to complete the test.
+         b. Takes more than 15 minutes (>15).
+         c. Takes less than 10 minutes (<10).
+         d. Takes between 12 and 18 minutes (12-18).
+         e. Calculate the mean and standard deviation of the Chi-Square distribution.
+"""
+k = 10
+dist = stats.chi2(k)  # Chi-square distribution
+# For a
+# Since normal distribution is continuous, the probability of any exact value is zero. P(X = 15) = 0
+print("Probability of getting exactly 15 minutes:", 0)
+# For b
+prob = dist.sf(15)
+print("Probability of getting more than 15 minutes:", prob)
+# For c
+prob = dist.cdf(10)
+print("Probability of getting less than 10 minutes:", prob)
+# For d
+prob = dist.cdf(18) - dist.cdf(12)
+print("Probability of getting between 12 and 18 minutes:", prob)
+# For e
+mean = k
+std = math.sqrt(2 * k)
+print("Mean:", mean)
+print("Std:", std)
+
 """Binomial Distribution.
 
 Problem: A multiple choice test contains 20 questions with answer choice A, B, C and D. Only one answer choice to
