@@ -1,14 +1,48 @@
 """
-t-Distribution:
-    The t-distribution (Student's t-distribution) is a probability distribution that is similar in shape to the normal distribution but has heavier tails, meaning it accounts for more variability in small samples.
+t-Distribution (Student’s t-Distribution):
+    The t-distribution is a probability distribution that is similar in shape to the normal distribution but has
+    heavier tails, meaning it accounts for more variability in small samples. It is commonly used in hypothesis
+    testing and confidence interval estimation when the population standard deviation (σ) is unknown.
+
+Formula:
+    The probability density function (PDF) of the t-distribution is:
+    f(t; ν) = (Γ((ν+1)/2) / (√(νπ) * Γ(ν/2))) * (1 + t²/ν)^(-(ν+1)/2)
+where:
+    t = variable of interest
+    ν = degrees of freedom (df = n - 1)
+    Γ(x) = Gamma function
+    π = Pi (≈ 3.1416)
+
+Statistical Properties:
+    Mean: E(T) = 0, for df > 1
+    Variance: Var(T) = df / (df - 2), for df > 2
+    Standard Deviation: std(T) = √(df / (df - 2)), for df > 2
+    Mode: 0
+    Skewness: 0 (symmetrical around mean)
+    Kurtosis: 6 / (df - 4), for df > 4
 
 When to Use the t-Distribution:
     - When working with small sample sizes (n < 30).
     - When the population standard deviation (σ) is unknown.
+    - In constructing confidence intervals for the population mean when σ is unknown.
+    - In hypothesis testing for small samples (e.g., t-tests).
 
-Convergence with Normal Distribution:
-    - As the degrees of freedom (df = n - 1) increase, the t-distribution approaches the standard normal distribution (Z-distribution).
+Relationship with Normal Distribution:
+    - As the degrees of freedom (df = n - 1) increase, the t-distribution approaches the standard normal
+      distribution (Z-distribution).
     - For df > 30, the difference between the t-distribution and normal distribution becomes negligible.
+    - If X follows a normal distribution, then:
+
+      T = (X̄ - μ) / (S / √n) ~ t(n-1)
+
+    - Standardized t-distribution follows a normal approximation:
+
+      t(ν) ≈ N(0,1)  as  ν → ∞
+
+Applications:
+    - Student’s t-test for hypothesis testing (one-sample, two-sample, paired t-tests).
+    - Estimating confidence intervals for small sample means.
+    - Regression analysis when sample size is limited.
 """
 
 import numpy as np

@@ -1,6 +1,13 @@
 """
 Chi-Square Distribution:
     The Chi-Square distribution is a probability distribution that is used primarily in hypothesis testing, particularly for tests of independence and goodness of fit. It is a special case of the gamma distribution and is characterized by its positive skew and non-negative values.
+Formula:
+    The probability density function (PDF) of the Chi-Square distribution is given by:
+    f(x; k) = (1 / (2^(k/2) * Γ(k/2))) * x^(k/2 - 1) * e^(-x/2),   for x > 0
+where:
+    k = degrees of freedom (df)
+    Γ(k/2) = Gamma function of (k/2)
+    e = Euler’s number (≈ 2.718)
 
 Statistical Properties:
     - Mean: E(χ²) = df

@@ -1,5 +1,53 @@
-"""
-Documentation:
+"""Normal Distribution:
+    The normal distribution is a continuous probability distribution that models many natural phenomena
+    where values cluster around a central mean with symmetrical spread.
+Formula:
+    The probability density function (PDF) of the normal distribution is given by:
+    f(x) = (1 / sqrt(2πσ²)) * e^(- (x - μ)² / (2σ²))
+where:
+    μ = mean (center of the distribution)
+    σ² = variance (spread of the distribution)
+    σ = standard deviation (square root of variance)
+    e = Euler’s number (≈ 2.718)
+    π = Pi (≈ 3.1416)
+
+Statistical Properties:
+    - Mean (Expected Value): E[X] = μ
+    - Variance: Var(X) = σ²
+    - Standard Deviation: σ = sqrt(Var(X))
+    - Mode: μ (for a symmetric normal distribution)
+    - Skewness: 0 (symmetrical distribution)
+    - Kurtosis: 3 (mesokurtic, bell-shaped curve)
+
+Standard Normal Distribution:
+    A normal distribution with mean μ = 0 and standard deviation σ = 1 is called the standard normal distribution (Z-distribution).
+    Any normal variable X can be standardized using:
+        Z = (X - μ) / σ
+    where Z follows a standard normal distribution **N(0,1)**.
+
+Properties of the Normal Distribution:
+    - Symmetric about the mean (μ)
+    - Bell-shaped curve
+    - The total area under the curve is 1
+    - Approximately:
+        * 68% of values lie within 1σ of the mean
+        * 95% of values lie within 2σ of the mean
+        * 99.7% of values lie within 3σ of the mean (Empirical Rule)
+
+Applications:
+    - Modeling heights, weights, and IQ scores in a population
+    - Stock market returns and financial modeling
+    - Error distribution in scientific measurements
+    - Quality control and process optimization
+    - Signal processing and noise modeling
+
+Checks if a problem follows a normal distribution. Conditions:
+    1. The data is continuous.
+    2. The distribution is symmetric and bell-shaped.
+    3. Most values cluster around the mean (μ).
+    4. The Empirical Rule holds (68-95-99.7%).
+
+Terminology:
 
 1. PDF (Probability Density Function):
    - Describes the likelihood of a random variable taking on a specific value in a continuous distribution.
