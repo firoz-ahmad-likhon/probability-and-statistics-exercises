@@ -57,9 +57,13 @@ A collection of exercises and practice problems on probability and statistics us
 - Chi square test
 
 ### Probability Distributions
-- Normal Distribution
-- Chi-Square Distribution
-- Binomial Distribution
+- **Continuous Distributions**
+  - Normal Distribution
+  - Chi-Square Distribution
+
+- **Discrete Distributions**
+  - Binomial Distribution
+  - Poisson Distribution
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

@@ -240,3 +240,42 @@ mean = n * p  # or dist.mean()
 std = math.sqrt(n * p * (1 - p))  # or dist.std()
 print("Mean:", mean)
 print("Std:", std)
+
+"""Poisson Distribution.
+
+Problem: A student receives an average of 7 text messages over a 2-hour period. The number of text messages
+         received follows a Poisson distribution. Find the probability that the student will receive:
+         a. exactly 9 text messages in 2 hours
+         b. at least 9 text messages (> 9) in 2 hours
+         c. at most 9 text messages (< 9) in 2 hours
+         d. between 4 and 8 text messages (4 to 8) in 2 hours
+         e. calculate the mean and standard deviation of the Poisson distribution
+         f. exactly 60 test messages in 24 hours.
+"""
+mean = 7  # mean = λ
+dist = stats.poisson(mean)  # Poisson distribution
+# For a
+k = 9
+prob = dist.pmf(k)
+print("Probability of getting 9 text in 2 hours:", prob)
+# For b
+k = 9
+prob = dist.sf(k)
+print("Probability of getting at least 9 text in 2 hours:", prob)
+# For c
+k = 9
+prob_c = dist.cdf(k)
+print("Probability of getting at most 9 text in 2 hours:", prob_c)
+# For d
+k1, k2 = 4, 8
+prob_d = dist.cdf(k2) - dist.cdf(k1)
+print("Probability of getting between 4 and 8 text  in 2 hours:", prob_d)
+# For e
+std = math.sqrt(mean)  # or dist.std()
+print("Mean:", mean)
+print("Std:", std)
+# For f
+k = 60
+mean_24 = (mean * 24) / 2  # Average number of text messages for 24 hours
+prob = stats.poisson.pmf(k, mean_24)
+print("Probability of getting 60 text in 24 hours:", prob)
