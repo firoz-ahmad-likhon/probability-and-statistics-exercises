@@ -46,35 +46,6 @@ Checks if a problem follows a normal distribution. Conditions:
     2. The distribution is symmetric and bell-shaped.
     3. Most values cluster around the mean (μ).
     4. The Empirical Rule holds (68-95-99.7%).
-
-Terminology:
-
-1. PDF (Probability Density Function):
-   - Describes the likelihood of a random variable taking on a specific value in a continuous distribution.
-   - Example: For a normal distribution, the PDF graph is a bell curve.
-
-2. CDF (Cumulative Distribution Function):
-   - Represents the probability that a random variable is less than or equal to a specific value.
-   - Example: For value `x`, CDF(x) = P(X ≤ x).
-
-3. PPF (Percent Point Function) / Inverse CDF:
-   - The inverse of the CDF. It gives the value of the random variable corresponding to a specific cumulative probability.
-   - Example: If `p = 0.95`, PPF(0.95) gives the value `x` such that P(X ≤ x) = 0.95.
-
-4. Probability Comparisons:
-   - Probability in Between: P(a ≤ X ≤ b)
-     - Calculate the difference between the CDF at `b` and `a`: P(a ≤ X ≤ b) = CDF(b) - CDF(a).
-
-   - Probability Less Than: P(X < a)
-     - Directly use the CDF value at `a`: P(X < a) = CDF(a).
-
-   - Probability Greater Than: P(X > a)
-     - Use the complement of the CDF at `a`: P(X > a) = 1 - CDF(a).
-
-5. Applications:
-   - PDF is used to visualize the shape of the distribution and the relative likelihood of values.
-   - CDF and probability comparisons help calculate probabilities for given intervals or thresholds.
-   - PPF is useful for finding the value of the random variable for a given cumulative probability, often used for generating percentiles or for determining critical values in hypothesis testing.
 """
 
 import numpy as np

@@ -22,7 +22,7 @@ Convergence to Normal Distribution:
     approximates a normal distribution N(μ, σ²) with:
         μ = n * p
         σ² = n * p * (1 - p)
-    For a good normal approximation, np ≥ 5 and n(1 - p) ≥ 5 should hold.
+    For a good normal approximation, np ≥ 10 and n(1 - p) ≥ 10 should hold.
 
 Applications:
     - Modeling the number of defective items in a batch
