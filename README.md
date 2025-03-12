@@ -64,6 +64,7 @@ A collection of exercises and practice problems on probability and statistics us
 - **Discrete Distributions**
   - Binomial Distribution
   - Poisson Distribution
+  - Geometric Distribution
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

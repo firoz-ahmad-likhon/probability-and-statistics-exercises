@@ -229,16 +229,52 @@ prob = dist.sf(k)
 print("Probability of getting at least 6 questions correct:", prob)
 # For c
 k = 6
-prob_c = dist.cdf(k)
-print("Probability of getting at most 6 questions correct:", prob_c)
+prob = dist.cdf(k)
+print("Probability of getting at most 6 questions correct:", prob)
 # For d
 k1, k2 = 4, 8
-prob_d = dist.cdf(k2) - dist.cdf(k1)
-print("Probability of getting between 4 and 8 questions correct:", prob_d)
+prob = dist.cdf(k2) - dist.cdf(k1)
+print("Probability of getting between 4 and 8 questions correct:", prob)
 # For e
 mean = n * p  # or dist.mean()
 std = math.sqrt(n * p * (1 - p))  # or dist.std()
 print("Mean:", mean)
+print("Std:", std)
+
+"""Geometric Distribution.
+
+Problem: 2% of all tires produced by company XYZ has a defect. A random sample of 100 tires is tested for quality assurance.
+         Find the probability that:
+         a. The 7th tire selected is the first defective one.          → P(X = 7)
+         b. The first defective tire appears after selecting at least 10 tires. → P(X ≥ 10)
+         c. The first defective tire appears within the first 5 tires. → P(X ≤ 5)
+         d. The first defective tire appears between the 8th and 15th selected tires (inclusive). → P(8 ≤ X ≤ 15)
+         e. How many tires would you expect to test until finding the first defective one? → E(X)
+         f. Calculate the standard deviation of the geometric distribution. → SD(X)
+"""
+p = 0.02  # Probability of defect
+dist = stats.geom(p)  # Geometric distribution
+# For a: P(X = 7)
+k = 7
+prob = dist.pmf(k)
+print("Probability of getting 7th tire as defective:", prob)
+# For b: P(X ≥ 10)
+k = 10
+prob = dist.sf(k)
+print("Probability of getting defective tire after selecting at least 10 tires:", prob)
+# For c: P(X ≤ 5)
+k = 5
+prob = dist.cdf(k)
+print("Probability of getting defective tire within the first 5 tires:", prob)
+# For d: P(8 ≤ X ≤ 15)
+k1, k2 = 8, 15
+prob = dist.cdf(k2) - dist.cdf(k1)
+print("Probability of getting defective tire between 8th and 15th selected tires:", prob)
+# For e: E(X)
+mean = 1 / p
+print("Expected number of tires to test until finding the first defective one:", mean)
+# For f
+std = math.sqrt((1 - p) / p**2)
 print("Std:", std)
 
 """Poisson Distribution.
@@ -264,12 +300,12 @@ prob = dist.sf(k)
 print("Probability of getting at least 9 text in 2 hours:", prob)
 # For c
 k = 9
-prob_c = dist.cdf(k)
-print("Probability of getting at most 9 text in 2 hours:", prob_c)
+prob = dist.cdf(k)
+print("Probability of getting at most 9 text in 2 hours:", prob)
 # For d
 k1, k2 = 4, 8
-prob_d = dist.cdf(k2) - dist.cdf(k1)
-print("Probability of getting between 4 and 8 text  in 2 hours:", prob_d)
+prob = dist.cdf(k2) - dist.cdf(k1)
+print("Probability of getting between 4 and 8 text  in 2 hours:", prob)
 # For e
 std = math.sqrt(mean)  # or dist.std()
 print("Mean:", mean)

@@ -1,20 +1,23 @@
 # Popular Probability Distributions:
 #
-# | Distribution        |  Type       | When to Use                                           |
-# |---------------------|-------------|-------------------------------------------------------|
-# | Bernoulli           | Discrete    | Single trial with two outcomes (success/failure).     |
-# | Binomial            | Discrete    | Number of successes in a fixed number of trials.      |
-# | Poisson             | Discrete    | Number of events in a fixed time/space interval.      |
-# | Geometric           | Discrete    | Number of trials until the first success.             |
-# | Negative Binomial   | Discrete    | Number of trials until a fixed number of successes.   |
-# | Uniform             | Continuous  | All outcomes within a range are equally likely.       |
-# | Normal (Gaussian)   | Continuous  | Naturally occurring data, e.g., heights, test scores. |
-# | Exponential         | Continuous  | Time between events in a Poisson process.             |
-# | Gamma               | Continuous  | Generalized waiting times for events.                 |
-# | Beta                | Continuous  | Probabilities constrained between 0 and 1.            |
-# | Chi-Square          | Continuous  | Statistical inference, variance estimation.           |
-# | Student's t         | Continuous  | Small sample means comparison.                        |
-# | Log-Normal          | Continuous  | Skewed distributions in finance, growth rates.        |
+# Popular Probability Distributions:
+
+# | Distribution      | Type       | When to Use                                           | Parameters                             |
+# |-------------------|------------|-------------------------------------------------------|----------------------------------------|
+# | Bernoulli         | Discrete   | Single trial with two outcomes (success/failure).     | p (probability of success)             |
+# | Binomial          | Discrete   | Number of successes in a fixed number of trials.      | n (trials), p (success probability)    |
+# | Poisson           | Discrete   | Number of events in a fixed time/space interval.      | λ (average event rate)                 |
+# | Geometric         | Discrete   | Number of trials until the first success.             | p (success probability)                |
+# | Negative Binomial | Discrete   | Number of trials until a fixed number of successes.   | r (successes), p (success probability) |
+# | Uniform           | Continuous | All outcomes within a range are equally likely.       | a (min), b (max)                       |
+# | Normal            | Continuous | Naturally occurring data, e.g., heights, test scores. | μ (mean), σ (std. deviation)           |
+# | Exponential       | Continuous | Time between events in a Poisson process.             | λ (rate parameter)                     |
+# | Gamma             | Continuous | Generalized waiting times for events.                 | k (shape), θ (scale)                   |
+# | Beta              | Continuous | Probabilities constrained between 0 and 1.            | α (shape1), β (shape2)                 |
+# | Chi-Square        | Continuous | Statistical inference, variance estimation.           | k (degrees of freedom)                 |
+# | Student's t       | Continuous | Small sample means comparison.                        | ν (degrees of freedom)                 |
+# | Log-Normal        | Continuous | Skewed distributions in finance, growth rates.        | μ (mean of log), σ (std. of log)       |
+
 
 """
 Probability Distributions:
