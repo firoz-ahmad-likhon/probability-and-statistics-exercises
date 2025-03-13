@@ -59,6 +59,7 @@ A collection of exercises and practice problems on probability and statistics us
 ### Probability Distributions
 - **Continuous Distributions**
   - Normal Distribution
+  - Exponential Distribution
   - Chi-Square Distribution
 
 - **Discrete Distributions**

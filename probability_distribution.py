@@ -71,4 +71,25 @@ Applications:
       generating percentiles or for determining critical values in hypothesis testing.
     - SF is useful in survival analysis, reliability engineering, and risk assessment to evaluate the probability
       that a variable exceeds a certain threshold.
+
+Memoryless Property:
+    The memoryless property refers to a characteristic of certain types of random variables, where the probability of
+    an event occurring in the future is independent of the past. In other words, given that the random event has not
+    yet occurred, the probability of it happening in the next time interval is the same, regardless of how long it has
+    been since the event started.
+
+    This property is most commonly associated with the exponential distribution and the geometric distribution.
+
+    Example:
+        In a real-life scenario, consider a bus that arrives at a bus stop at random intervals, and you are waiting for
+        the bus. If the bus has not arrived yet, the memoryless property implies that your expectation of the time
+        until the next bus arrives is unaffected by how long you’ve already been waiting.
+
+        Mathematically, if the time until the bus arrives follows an exponential distribution, the probability of the
+        bus arriving in the next t minutes is the same, regardless of how long you’ve already been waiting.
+
+    Formally, the memoryless property can be expressed as:
+        P(T > t + s | T > t) = P(T > s)
+        where T is a random variable representing the time until the event occurs,
+        t and s are time intervals, and P represents the probability.
 """

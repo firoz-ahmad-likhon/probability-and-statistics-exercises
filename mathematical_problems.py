@@ -3,7 +3,10 @@ from scipy import stats
 
 """Estimating Confidence Interval.
 
-Problem: A researcher wants to estimate the confidence interval for the average sales price of medium-sized apartments in a city.For this, the researcher collected a sample of 1,500 apartments, and the sample's mean price was $299,720. It is known that the population standard deviation is $68,650. Find the 95% confidence interval for the average sales price of apartments in the city.
+Problem: A researcher wants to estimate the confidence interval for the average sales price of medium-sized apartments
+         in a city.For this, the researcher collected a sample of 1,500 apartments, and the sample's mean price was
+         $299,720. It is known that the population standard deviation is $68,650. Find the 95% confidence interval for
+         the average sales price of apartments in the city.
 """
 n = 1500
 x = 299720  # Sample mean
@@ -18,7 +21,9 @@ print(cl)
 
 """Estimating Confidence Interval.
 
-Problem: A doctor wants to estimate the confidence interval for the average cholesterol level of adult men in a city. A sample of 25 men gives an average cholesterol level of 186 mg/dL, and the sample's standard deviation is 12 mg/dL. Find the 95% confidence interval for the average cholesterol level of adult men in the city.
+Problem: A doctor wants to estimate the confidence interval for the average cholesterol level of adult men in a city.
+         A sample of 25 men gives an average cholesterol level of 186 mg/dL, and the sample's standard deviation is
+         12 mg/dL. Find the 95% confidence interval for the average cholesterol level of adult men in the city.
 """
 n = 25
 x = 186  # Sample mean
@@ -34,7 +39,9 @@ print(cl)
 
 """Estimating Confidence Interval for Proportion.
 
-Problem: In 2009, the Pew Research Center conducted a survey asking people if religion played an important role in their lives. The sample of 1,000 people found that 44% responded affirmatively. Find the 99% confidence interval for the proportion of people in the population who consider religion important.
+Problem: In 2009, the Pew Research Center conducted a survey asking people if religion played an important role in
+         their lives. The sample of 1,000 people found that 44% responded affirmatively. Find the 99% confidence
+         interval for the proportion of people in the population who consider religion important.
 """
 n = 1000
 p = .44  # Sample proportion
@@ -49,7 +56,9 @@ print(cl)
 
 """Hypothesis Test Two-tailed.
 
-Problem: A company claims that their employees take an average of 90 minutes to learn to use a new machine. A sample of 20 employees has an average time of 85 minutes, with a standard deviation of 7 minutes. Test the claim at the 1% significance level (99% confidence).
+Problem: A company claims that their employees take an average of 90 minutes to learn to use a new machine.
+         A sample of 20 employees has an average time of 85 minutes, with a standard deviation of 7 minutes.
+         Test the claim at the 1% significance level (99% confidence).
 
 Hypotheses:
     - H₀: The average time for employees to learn to use the new machine is 90 minutes. μ = 90
@@ -67,7 +76,9 @@ print(p, p <= a)  # Accept or reject the null hypothesis
 
 """ Hypothesis Test Left-tailed.
 
-Problem: A mayor claims that the average family wealth in his city is at least $300,000. A sample of 25 families shows an average wealth of $288,000, with a population standard deviation of $80,000. Test the mayor's claim at the 2.5% significance level.
+Problem: A mayor claims that the average family wealth in his city is at least $300,000. A sample of 25 families shows
+         an average wealth of $288,000, with a population standard deviation of $80,000. Test the mayor's claim at the
+         2.5% significance level.
 
 Hypotheses:
     - H₀: The average family wealth in the city is at least $300,000. μ >= 300,000
@@ -85,7 +96,9 @@ print(p, p <= a)  # Accept or reject the null hypothesis
 
 """Hypothesis Test Right-tailed.
 
-Problem: An expert claims that people who exercise regularly have a higher average oxygen intake than the general population, whose mean oxygen intake is 36.7 ml/kg. A sample of 15 exercisers shows an average intake of 40.6 ml/kg with a sample standard deviation of 6 ml/kg. Test this claim at the 5% significance level.
+Problem: An expert claims that people who exercise regularly have a higher average oxygen intake than the general
+         population, whose mean oxygen intake is 36.7 ml/kg. A sample of 15 exercisers shows an average intake of
+         40.6 ml/kg with a sample standard deviation of 6 ml/kg. Test this claim at the 5% significance level.
 
 Hypotheses:
     - H₀: The average oxygen intake of exercisers is equal to or less than the general population's average. μ <= 36.7
@@ -103,7 +116,8 @@ print(p, p <= a)  # Accept or reject the null hypothesis
 
 """Hypothesis Test for Proportion.
 
-Problem: A judge claims that more than 25% of lawyers advertise their practice. A sample of 200 lawyers shows that 63 advertise. Test the judge's claim at the 5% significance level.
+Problem: A judge claims that more than 25% of lawyers advertise their practice. A sample of 200 lawyers shows that
+         63 advertise. Test the judge's claim at the 5% significance level.
 
 Hypotheses:
     - H₀: The proportion of lawyers who advertise is less than or equal to 25%. p <= 25
@@ -157,7 +171,7 @@ Problem: The scores of students in a standardized math exam are normally distrib
 """
 mean = 75
 std = 10
-dist = stats.norm(mean, std)  # Normal distribution
+dist = stats.norm(loc=mean, scale=std)  # Normal distribution
 # For a
 # Since normal distribution is continuous, the probability of any exact value is zero. P(X = 85) = 0
 print("Probability of getting exactly 85:", 0)
@@ -186,7 +200,7 @@ Problem: A university professor is analyzing the variance in time (in minutes) t
          e. Calculate the mean and standard deviation of the Chi-Square distribution.
 """
 k = 10
-dist = stats.chi2(k)  # Chi-square distribution
+dist = stats.chi2(df=k)  # Chi-square distribution
 # For a
 # Since normal distribution is continuous, the probability of any exact value is zero. P(X = 15) = 0
 print("Probability of getting exactly 15 minutes:", 0)
@@ -205,6 +219,31 @@ std = math.sqrt(2 * k)
 print("Mean:", mean)
 print("Std:", std)
 
+"""Exponential Distribution
+
+Problem: A laptop manufacturer company XYZ, produces laptops that have an average lifespan of 5 years. The lifespan of
+         each laptop follows an exponential distribution. Find the probability that a randomly selected laptop:
+         a. Lasts more than 6 years (>6).
+         b. Lasts less than 3 years (<3).
+         c. Lasts between 4 and 7 years (4-7).
+         d. Calculate the mean and standard deviation of the Exponential distribution.
+"""
+mean = std = 5
+rate = 1 / mean     # λ is the inverse of the mean
+dist = stats.expon(scale=std)  # Exponential distribution
+# For a
+prob = dist.sf(6)
+print("Probability of lasting more than 6 years:", prob)
+# For b
+prob = dist.cdf(3)
+print("Probability of lasting less than 3 years:", prob)
+# For c
+prob = dist.cdf(7) - dist.cdf(4)
+print("Probability of lasting between 4 and 7 years:", prob)
+# For d
+print("Mean:", mean)
+print("Std:", std)
+
 """Binomial Distribution.
 
 Problem: A multiple choice test contains 20 questions with answer choice A, B, C and D. Only one answer choice to
@@ -218,7 +257,7 @@ Problem: A multiple choice test contains 20 questions with answer choice A, B, C
 """
 n = 20
 p = 1 / 4  # Probability of getting a correct answer
-dist = stats.binom(n, p)  # Binomial distribution
+dist = stats.binom(n=n, p=p)  # Binomial distribution
 # For a
 k = 6
 prob = dist.pmf(k)
@@ -243,8 +282,8 @@ print("Std:", std)
 
 """Geometric Distribution.
 
-Problem: 2% of all tires produced by company XYZ has a defect. A random sample of 100 tires is tested for quality assurance.
-         Find the probability that:
+Problem: 2% of all tires produced by company XYZ has a defect. A random sample of 100 tires is tested for quality
+        assurance. Find the probability that:
          a. The 7th tire selected is the first defective one.          → P(X = 7)
          b. The first defective tire appears after selecting at least 10 tires. → P(X ≥ 10)
          c. The first defective tire appears within the first 5 tires. → P(X ≤ 5)
@@ -253,7 +292,7 @@ Problem: 2% of all tires produced by company XYZ has a defect. A random sample o
          f. Calculate the standard deviation of the geometric distribution. → SD(X)
 """
 p = 0.02  # Probability of defect
-dist = stats.geom(p)  # Geometric distribution
+dist = stats.geom(p=p)  # Geometric distribution
 # For a: P(X = 7)
 k = 7
 prob = dist.pmf(k)
@@ -289,7 +328,7 @@ Problem: A student receives an average of 7 text messages over a 2-hour period. 
          f. exactly 60 test messages in 24 hours.
 """
 mean = 7  # mean = λ
-dist = stats.poisson(mean)  # Poisson distribution
+dist = stats.poisson(mu=mean)  # Poisson distribution
 # For a
 k = 9
 prob = dist.pmf(k)
