@@ -244,6 +244,30 @@ print("Probability of lasting between 4 and 7 years:", prob)
 print("Mean:", mean)
 print("Std:", std)
 
+
+"""Log-Normal Distribution
+
+Problem: The daily revenue of a small online store follows a log-normal distribution with parameters:
+         μ = 4.5 (mean of log-transformed revenue) and σ = 0.954 (standard deviation of log-transformed revenue)
+         Calculate the following probabilities:
+         a. P(X > 200) → Probability of daily revenue greater than $200
+         b. P(X < 100) → Probability of daily revenue less than $100
+         c. P(100 ≤ X ≤ 200) → Probability that daily revenue falls between $100 and $200
+"""
+mean = 4.5  # Mean of log(X)
+std = 0.954  # Standard deviation of log(X)
+dist = stats.lognorm(s=std, scale=math.exp(mean))  # log-normal distribution
+# For a
+prob = dist.sf(200)  # 1 - CDF(200)
+print("Probability of revenue greater than $200:", prob)
+# For b
+prob = dist.cdf(100)
+print("Probability of revenue less than $100:", prob)
+# For c
+prob = dist.cdf(200) - dist.cdf(100)
+print("Probability of revenue between $100 and $200:", prob)
+
+
 """Binomial Distribution.
 
 Problem: A multiple choice test contains 20 questions with answer choice A, B, C and D. Only one answer choice to
