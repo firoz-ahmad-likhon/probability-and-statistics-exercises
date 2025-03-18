@@ -45,7 +45,7 @@ from scipy.stats import poisson
 λ = 10  # Average rate of occurrences
 
 # Create a Poisson distribution
-dist = poisson(λ)
+dist = poisson(mu=λ)
 
 print("-----Start calculating probability under points-----")
 # Define specific points

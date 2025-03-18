@@ -47,7 +47,7 @@ n = 20   # Number of trials
 p = 0.4  # Probability of success in each trial
 
 # Create a binomial distribution
-dist = binom(n, p)
+dist = binom(n=n, p=p)
 
 print("-----Start calculating probability under points-----")
 # Define specific points

@@ -70,11 +70,12 @@ x = 85  # Sample mean
 std = 7  # Sample standard deviation
 a = .01  # Significance level (1%)
 se = std / math.sqrt(n)  # Standard error
-dist = stats.norm(mean, se)  # Normal distribution under null hypothesis
+# Normal distribution under null hypothesis
+dist = stats.norm(loc=mean, scale=se)
 p = 2 * dist.cdf(x)  # Two-tailed p-value
 print(p, p <= a)  # Accept or reject the null hypothesis
 
-""" Hypothesis Test Left-tailed.
+"""Hypothesis Test Left-tailed.
 
 Problem: A mayor claims that the average family wealth in his city is at least $300,000. A sample of 25 families shows
          an average wealth of $288,000, with a population standard deviation of $80,000. Test the mayor's claim at the
@@ -90,7 +91,8 @@ x = 288000  # Sample mean
 std = 80000  # Population standard deviation
 a = .025  # Significance level (2.5%)
 se = std / math.sqrt(n)  # Standard error
-dist = stats.norm(mean, se)  # Normal distribution under null hypothesis
+# Normal distribution under null hypothesis
+dist = stats.norm(loc=mean, scale=se)
 p = dist.cdf(x)  # Left-tailed p-value
 print(p, p <= a)  # Accept or reject the null hypothesis
 
@@ -110,7 +112,8 @@ x = 40.6  # Sample mean
 s = 6  # Sample standard deviation
 a = .05  # Significance level (5%)
 se = s / math.sqrt(n)  # Standard error
-dist = stats.t(n - 1, mean, se)  # T-distribution under null hypothesis
+# T-distribution under null hypothesis
+dist = stats.t(df=n - 1, loc=mean, scale=se)
 p = dist.sf(x)  # Right-tailed p-value
 print(p, p <= a)  # Accept or reject the null hypothesis
 
@@ -130,7 +133,7 @@ a = .05  # Significance level (5%)
 # Check if conditions for normal approximation are met
 print(p * n >= 10 and (1 - p) * n >= 10)
 se = math.sqrt((p * (1 - p)) / n)  # Standard error for proportion
-dist = stats.norm(p, se)  # Normal distribution under null hypothesis
+dist = stats.norm(loc=p, scale=se)  # Normal distribution under null hypothesis
 p_val = dist.sf(px)  # Right-tailed p-value
 print(p_val, p_val <= a)  # Accept or reject the null hypothesis
 
@@ -154,7 +157,7 @@ z_critical = stats.norm.ppf(1 - a / 2)  # Z-critical value for two-tailed test
 MoE = z_critical * se  # Margin of error
 low = mean - MoE  # Lower bound of confidence interval
 high = mean + MoE  # Upper bound of confidence interval
-dist = stats.norm(x, se)  # Distribution under alternative hypothesis
+dist = stats.norm(loc=x, scale=se)  # Distribution under alternative hypothesis
 beta = dist.cdf(high) - dist.cdf(low)  # Type II error probability (Beta)
 print(se, z_critical, low, high, beta)  # Results for hypothesis error
 
@@ -376,5 +379,5 @@ print("Std:", std)
 # For f
 k = 60
 mean_24 = (mean * 24) / 2  # Average number of text messages for 24 hours
-prob = stats.poisson.pmf(k, mean_24)
+prob = stats.poisson.pmf(k, mu=mean_24)
 print("Probability of getting 60 text in 24 hours:", prob)

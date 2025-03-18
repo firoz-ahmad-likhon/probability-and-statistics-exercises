@@ -56,7 +56,7 @@ from scipy.stats import norm
 speed = np.array([99, 86, 87, 88, 111, 86, 103, 87, 94, 78, 77, 85, 86])
 
 # Create a normal distribution
-dist = norm(np.mean(speed), np.std(speed, ddof=1))
+dist = norm(loc=np.mean(speed), scale=np.std(speed, ddof=1))
 
 print("-----Start calculating probability under points-----")
 # Calculate the CDF values at 86 and 99

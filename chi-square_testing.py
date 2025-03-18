@@ -138,7 +138,7 @@ df = length - 1  # Degree of freedom
 # Chi-Squared statistic calculation
 chi_squared = np.sum((actual - expected) ** 2 / expected)
 
-dist = chi2(df)  # Chi-Square distribution
+dist = chi2(df=df)  # Chi-Square distribution
 p = dist.sf(chi_squared)  # 1 - dist.cdf(chi_squared)
 
 alpha = .05  # Significance level
@@ -178,7 +178,7 @@ chi_squared = np.sum((actual - expected) ** 2 / expected)
 rows, columns = actual.shape
 df = (rows - 1) * (columns - 1)  # Degrees of freedom
 
-dist = chi2(df)  # Chi-Square distribution
+dist = chi2(df=df)  # Chi-Square distribution
 p = dist.sf(chi_squared)  # 1 - dist.cdf(chi_squared)
 
 alpha = .05  # Significance level
@@ -220,7 +220,7 @@ chi_squared = np.sum((actual - expected) ** 2 / expected)
 
 rows, columns = actual.shape
 df = (rows - 1) * (columns - 1)  # Degrees of freedom
-p = chi2(df).sf(chi_squared)  # Survival function (1 - CDF)
+p = chi2(df=df).sf(chi_squared)  # Survival function (1 - CDF)
 
 alpha = .05  # Significance level
 print(chi_squared, p, p <= alpha)

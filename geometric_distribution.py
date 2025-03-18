@@ -44,7 +44,7 @@ from scipy.stats import geom
 p = 0.3  # Probability of success in each trial
 
 # Create a geometric distribution
-dist = geom(p)
+dist = geom(p=p)
 
 print("-----Start calculating probability under points-----")
 # Define specific points

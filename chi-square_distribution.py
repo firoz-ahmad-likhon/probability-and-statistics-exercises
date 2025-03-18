@@ -33,7 +33,7 @@ from scipy.stats import chi2
 data = np.array([1, 3, 3, 6, 6, 8, 9, 2, 5, 6, 5, 3, 2])
 df = len(data) - 1  # Degree of freedom
 
-dist = chi2(df)  # Chi-Square distribution
+dist = chi2(df=df)  # Chi-Square distribution
 
 print("-----Start calculating probability under points-----")
 # Calculate the CDF values at 2 and 5
