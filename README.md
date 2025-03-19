@@ -59,6 +59,7 @@ A collection of exercises and practice problems on probability and statistics us
 ### Probability Distributions
 - **Continuous Distributions**
   - Normal Distribution
+  - Student's t-Distribution
   - Exponential Distribution
   - Log-Normal Distribution
   - Chi-Square Distribution
@@ -71,6 +72,7 @@ A collection of exercises and practice problems on probability and statistics us
 ## Resources
 - [Statistics - YouTube](https://www.youtube.com/watch?v=XZo4xyJXCak&list=PL0o_zxa4K1BVsziIRdfv4Hl4UIqDZhXWV)
 - [Probability and Statistics - Khan Academy](https://www.khanacademy.org/math/statistics-probability)
+- [Probability Math](https://www.youtube.com/watch?v=GrDHw3mfLj8)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
